@@ -6,8 +6,8 @@ Shankill -> Arklow direction SouthBound
 *ask departure and destination stations
 * get all the TrainCode of the current trains getCurrentTrainsXML_WithTrainType?TrainType=A .
 * get all stops for every TrainCode getTrainMovementsXML?TrainId=p750&TrainDate=23%20nov%202017
-* pick the train/trains that have the departure station in their stops list with correct direction ( northbound/southbound ) and where departureTime > currentTime. 
-	it also need to have departureTime > currentTime Date()
-
-
-* if you are starting from Shankill then
+* pick the train/trains that have the departure station in their stops list with correct direction ( northbound/southbound ) and where departureTime > currentTime.
+	**if any of the trains contains departure and destination station as well, then you have found a direct train.
+	**if none of the trains contains the couple of departure/destination then you need to find a coincidence
+	 	**in order to find a coincidence you need to find all the running trains that contain destination station
+			and share at least one stop with the trains selected as possible first train to take. you have to consider the right direction as well.
