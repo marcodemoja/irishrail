@@ -3,10 +3,11 @@ irish rails:
 Arklow   -> Shankill direction Northbound
 Shankill -> Arklow direction SouthBound
 
-*ask departure and destination station
-* get all the TrainCode of the current trains getCurrentTrainsXML_WithTrainType?TrainType=A
-* get all the stop for every TrainCode getTrainMovementsXML?TrainId=p750&TrainDate=23%20nov%202017
-* pick the train/trains that has the departure station in his stops list whit correct direction ( northbound/southbound ). it also need to have departureTime > currentTime Date() a
-	**if the departure station is
+*ask departure and destination stations
+* get all the TrainCode of the current trains getCurrentTrainsXML_WithTrainType?TrainType=A .
+* get all stops for every TrainCode getTrainMovementsXML?TrainId=p750&TrainDate=23%20nov%202017
+* pick the train/trains that have the departure station in their stops list with correct direction ( northbound/southbound ) and where departureTime > currentTime. 
+	it also need to have departureTime > currentTime Date()
+
 
 * if you are starting from Shankill then
