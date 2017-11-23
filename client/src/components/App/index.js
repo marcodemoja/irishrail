@@ -16,7 +16,7 @@ class App extends Component {
         trains
       }))
 
-    fetch('/station/get-running-trains')
+    fetch('/station/bray/get-running-trains')
       .then(res => res.json())
       .then(trains_by_station => this.setState({
         trains_by_station
