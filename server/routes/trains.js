@@ -8,10 +8,12 @@ router.get('/:station_code/:direction/running', function(req, res, next) {
   request('http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML?StationCode=' + req.params.station_code, (err, data) => {
     let json = xmlParser.parse(data.body)
     let trainsByDirection
-    json = json.ArrayOfObjStationData
+    json = json.ArrayOfObjStationData.objStationData
 
     trainsByDirection = json.filter((x) => {
-      return x.Direction == req.params.direction.toUpperCase()
+      console.log(req.params.direction.toUpperCase(), 'direction')
+      console.log(x.Direction, 'x.Direction')
+      return x.Direction.toLowerCase() == req.params.direction
     })
 
     console.log(trainsByDirection, 'trainsByDirection')

@@ -10,17 +10,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/trains/running')
+    fetch('solutions/SKILL/ARKLW')
       .then(res => res.json())
       .then(trains => this.setState({
         trains
       }))
 
-    fetch('/station/bray/get-running-trains')
-      .then(res => res.json())
-      .then(trains_by_station => this.setState({
-        trains_by_station
-      }))
   }
 
   escapeSpecialChars(text) {
@@ -28,7 +23,7 @@ class App extends Component {
   }
 
   renderList() {
-    return this.state.trains.map(train => <List.Item key={train.TrainCode}>{this.escapeSpecialChars(train.PublicMessage)}</List.Item>
+    return this.state.trains.map(train => <List.Item key={train.Traincode}>TrainCode: {train.Traincode} - depart: {train.Schdepart}</List.Item>
     )
   }
 
