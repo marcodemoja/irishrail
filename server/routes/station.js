@@ -3,12 +3,10 @@ var router = express.Router()
 var request = require('request')
 var xmlParser = require('fast-xml-parser')
 
-/* GET trains listing. */
-router.get('/:stationcode/get-running-trains', function(req, res, next) {
-  // console.log(req, 'request obj')
-  request('http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML_WithNumMins?StationCode=' + req.params.stationcode + '&NumMins=90', (err, data) => {
+/* GET running trains due to serve the selected station. */
+router.get('/:station_name/get-running-trains', (req, res, next) => {
+  request('http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByNameXML_WithNumMins?StationName=' + req.params.station_name + '&NumMins=90', (err, data) => {
     let json = xmlParser.parse(data.body)
-    console.log(json)
     res.send(json.ArrayOfObjStationData.objStationData)
   })
 })
