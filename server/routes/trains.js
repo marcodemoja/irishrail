@@ -11,7 +11,7 @@ router.get('/:station_code/:direction/running', function(req, res, next) {
     if (json.ArrayOfObjStationData.hasOwnProperty('objStationData')) {
       let data = Array.isArray(json.ArrayOfObjStationData.objStationData) ? json.ArrayOfObjStationData.objStationData : [json.ArrayOfObjStationData.objStationData]
 
-      // pick the trains with the right direction depending on your destination
+      // pick the trains with the right direction Southbound|Northbound
       trainsByDirection = data.filter((x) => {
         return x.Direction.toLowerCase() == req.params.direction
       })
