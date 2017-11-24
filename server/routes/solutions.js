@@ -21,9 +21,8 @@ router.get('/:from/:to', (req, res, next) => {
   request('http://localhost:3001/trains/' + req.params.from + '/' + direction + '/running', (err, data) => {
     let trainDate = new Date()
     let trainsInTime = []
-
+    console.log(data.body, 'data from trains call')
     if (data.body.length > 0) {
-      console.log(typeof data.body, 'data into trains route')
       trainsInTime = JSON.parse(data.body).filter((train) => {
         trainDate.setHours(train.Schdepart.split(':')[0])
         trainDate.setMinutes(train.Schdepart.split(':')[1])

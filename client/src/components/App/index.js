@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('solutions/SKILL/ARKLW')
+    fetch('solutions/ARKLW/SKILL')
       .then(res => res.json())
       .then(trains => this.setState({
         trains
@@ -18,13 +18,10 @@ class App extends Component {
 
   }
 
-  escapeSpecialChars(text) {
-    return text.replace(/\\n/g, " - ")
-  }
-
   renderList() {
-    return this.state.trains.map(train => <List.Item key={train.Traincode}>TrainCode: {train.Traincode} - depart: {train.Schdepart}</List.Item>
+    return this.state.trains.length > 0 ? this.state.trains.map(train => <List.Item key={train.Traincode}>TrainCode: {train.Traincode} - depart: {train.Schdepart}</List.Item>
     )
+      : <List.Item key={1}>There are no trains</List.Item>
   }
 
   render() {
